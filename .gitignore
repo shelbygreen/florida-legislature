@@ -1,3 +1,8 @@
+# others
+data/geospatial/fetch
+data/geospatial/process
+scripts/testing.ipynb
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
