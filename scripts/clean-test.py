@@ -9,7 +9,7 @@ from shapely.geometry import shape, mapping, MultiPolygon
 # a few states have Point features in their geojson shapes, we
 # need to remove those for geojson-merge and mapshaper to able
 # to handle them
-POINTS_STATES = ["DE", "NJ", "FL", "LA", "MD", "NC", "OH", "PR", "MS"]
+POINTS_STATES = ["DE", "NJ", "LA", "MD", "NC", "OH", "PR", "MS"]
 
 
 def remove_points(raw_dir, clean_dir, glob_ptrn):
@@ -133,12 +133,12 @@ if __name__ == "__main__":
         output.mkdir(parents=True, exist_ok=True)
 
     # handle states
-    clip_chamber_shapes(raw_shapes, clipped_shapes / "state", "*state.geojson")
+    # clip_chamber_shapes(raw_shapes, clipped_shapes / "state", "*state.geojson")
     # remove_points(
     #     clipped_shapes / "state", depointed_shapes / "state", "*state.geojson"
     # )
     # reproject_chamber_shapes(depointed_shapes / "state", clean_shapes / "state")
-    reproject_chamber_shapes(clipped_shapes / "state", clean_shapes / "state")
+    # reproject_chamber_shapes(clipped_shapes / "state", clean_shapes / "state")
 
     # handle house
     clip_chamber_shapes(raw_shapes, clipped_shapes / "house", "*house.geojson")
@@ -146,20 +146,20 @@ if __name__ == "__main__":
     #     clipped_shapes / "house", depointed_shapes / "house", "*house.geojson"
     # )
     # reproject_chamber_shapes(depointed_shapes / "house", clean_shapes / "house")
-    reproject_chamber_shapes(clipped_shapes / "house", clean_shapes / "house")
+    # reproject_chamber_shapes(clipped_shapes / "house", clean_shapes / "house")
 
 
     # handle senate
-    clip_chamber_shapes(raw_shapes, clipped_shapes / "senate", "*senate.geojson")
+    # clip_chamber_shapes(raw_shapes, clipped_shapes / "senate", "*senate.geojson")
     # remove_points(
     #     clipped_shapes / "senate", depointed_shapes / "senate", "*senate.geojson"
     # )
     # reproject_chamber_shapes(depointed_shapes / "senate", clean_shapes / "senate")
-    reproject_chamber_shapes(clipped_shapes / "house", clean_shapes / "house")
+    # reproject_chamber_shapes(clipped_shapes / "senate", clean_shapes / "senate")
 
 
     # remove the intermediate files
     shutil.rmtree(clipped_shapes)
-    # shutil.rmtree(depointed_shapes)
+    shutil.rmtree(depointed_shapes)
 
     print("Done reprojecting. Check the clean folder for results")
