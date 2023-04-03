@@ -1,6 +1,7 @@
 # others
 data/geospatial/fetch
 data/geospatial/process
+data/geospatial/depointed
 scripts/testing.ipynb
 
 # Byte-compiled / optimized / DLL files
