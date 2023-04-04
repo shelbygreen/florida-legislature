@@ -3,6 +3,8 @@ data/geospatial/fetch
 data/geospatial/process
 data/geospatial/depointed
 scripts/testing.ipynb
+map/package-lock.json
+map/node_modules
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
