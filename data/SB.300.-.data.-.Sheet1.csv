@@ -1,41 +1,41 @@
-name,district,party,role,ccid,vote
-"Albritton, Ben",27,Republican,senate,12027U,y
-"Avila, Bryan",39,Republican,senate,12039U,y
-"Baxley, Dennis",13,Republican,senate,12013U,y
-"Berman, Lori",26,Democrat,senate,12026U,n
-"Book, Lauren",35,Democrat,senate,12035U,n
-"Boyd, Jim",20,Republican,senate,12020U,y
-"Bradley, Jennifer",6,Republican,senate,12006U,y
-"Brodeur, Jason",10,Republican,senate,12010U,y
-"Broxson, Doug",1,Republican,senate,12001U,y
-"Burgess, Danny",23,Republican,senate,12023U,y
-"Burton, Colleen",12,Republican,senate,12012U,y
-"Calatayud, Alexis",38,Republican,senate,12038U,n
-"Collins, Jay",14,Republican,senate,12014U,y
-"Davis, Tracie",5,Democrat,senate,12005U,n
-"DiCeglie, Nick",18,Republican,senate,12018U,y
-"Garcia, Ileana",36,Republican,senate,12036U,y
-"Grall, Erin",29,Republican,senate,12029U,y
-"Gruters, Joe",22,Republican,senate,12022U,y
-"Harrell, Gayle",31,Republican,senate,12031U,y
-"Hooper, Ed",21,Republican,senate,12021U,y
-"Hutson, Travis",7,Republican,senate,12007U,y
-"Ingoglia, Blaise",11,Republican,senate,12011U,y
-"Jones, Shevrin D. ""Shev""",34,Democrat,senate,12034U,n
-"Martin, Jonathan",33,Republican,senate,12033U,y
-"Mayfield, Debbie",19,Republican,senate,12019U,y
-"Osgood, Rosalind",32,Democrat,senate,12032U,n
-"Passidomo, Kathleen",28,Republican,senate,12028U,y
-"Perry, Keith",9,Republican,senate,12009U,y
-"Pizzo, Jason W. B.",37,Democrat,senate,12037U,n
-"Polsky, Tina Scott",30,Democrat,senate,12030U,n
-"Powell, Bobby",24,Democrat,senate,12024U,n
-"Rodriguez, Ana Maria",40,Republican,senate,12040U,y
-"Rouson, Darryl Ervin",16,Democrat,senate,12016U,n
-"Simon, Corey",3,Republican,senate,12003U,n
-"Stewart, Linda",17,Democrat,senate,12017U,n
-"Thompson, Geraldine F. ""Geri""",15,Democrat,senate,12015U,n
-"Torres, Victor M. , Jr.",25,Democrat,senate,12025U,m
-"Trumbull, Jay",2,Republican,senate,12002U,y
-"Wright, Tom A.",8,Republican,senate,12008U,y
-"Yarborough, Clay",4,Republican,senate,12004U,y
+name reverse,name,firstname,lastname,district,party,role,ccid,vote
+"Albritton, Ben",Ben Albritton,Ben,Albritton,27,Republican,Senator,12027U,y
+"Avila, Bryan",Bryan Avila,Bryan,Avila,39,Republican,Senator,12039U,y
+"Baxley, Dennis",Dennis Baxley,Dennis,Baxley,13,Republican,Senator,12013U,y
+"Berman, Lori",Lori Berman,Lori,Berman,26,Democrat,Senator,12026U,n
+"Book, Lauren",Lauren Book,Lauren,Book,35,Democrat,Senator,12035U,n
+"Boyd, Jim",Jim Boyd,Jim,Boyd,20,Republican,Senator,12020U,y
+"Bradley, Jennifer",Jennifer Bradley,Jennifer,Bradley,6,Republican,Senator,12006U,y
+"Brodeur, Jason",Jason Brodeur,Jason,Brodeur,10,Republican,Senator,12010U,y
+"Broxson, Doug",Doug Broxson,Doug,Broxson,1,Republican,Senator,12001U,y
+"Burgess, Danny",Danny Burgess,Danny,Burgess,23,Republican,Senator,12023U,y
+"Burton, Colleen",Colleen Burton,Colleen,Burton,12,Republican,Senator,12012U,y
+"Calatayud, Alexis",Alexis Calatayud,Alexis,Calatayud,38,Republican,Senator,12038U,n
+"Collins, Jay",Jay Collins,Jay,Collins,14,Republican,Senator,12014U,y
+"Davis, Tracie",Tracie Davis,Tracie,Davis,5,Democrat,Senator,12005U,n
+"DiCeglie, Nick",Nick DiCeglie,Nick,DiCeglie,18,Republican,Senator,12018U,y
+"Garcia, Ileana",Ileana Garcia,Ileana,Garcia,36,Republican,Senator,12036U,y
+"Grall, Erin",Erin Grall,Erin,Grall,29,Republican,Senator,12029U,y
+"Gruters, Joe",Joe Gruters,Joe,Gruters,22,Republican,Senator,12022U,y
+"Harrell, Gayle",Gayle Harrell,Gayle,Harrell,31,Republican,Senator,12031U,y
+"Hooper, Ed",Ed Hooper,Ed,Hooper,21,Republican,Senator,12021U,y
+"Hutson, Travis",Travis Hutson,Travis,Hutson,7,Republican,Senator,12007U,y
+"Ingoglia, Blaise",Blaise Ingoglia,Blaise,Ingoglia,11,Republican,Senator,12011U,y
+"Jones, Shevrin D. ""Shev""","Shevrin D. ""Shev"" Jones",Shevrin,Jones,34,Democrat,Senator,12034U,n
+"Martin, Jonathan",Jonathan Martin,Jonathan,Martin,33,Republican,Senator,12033U,y
+"Mayfield, Debbie",Debbie Mayfield,Debbie,Mayfield,19,Republican,Senator,12019U,y
+"Osgood, Rosalind",Rosalind Osgood,Rosalind,Osgood,32,Democrat,Senator,12032U,n
+"Passidomo, Kathleen",Kathleen Passidomo,Kathleen,Passidomo,28,Republican,Senator,12028U,y
+"Perry, Keith",Keith Perry,Keith,Perry,9,Republican,Senator,12009U,y
+"Pizzo, Jason W. B.",Jason W. B. Pizzo,Jason,Pizzo,37,Democrat,Senator,12037U,n
+"Polsky, Tina Scott",Tina Scott Polsky,Tina,Polsky,30,Democrat,Senator,12030U,n
+"Powell, Bobby",Bobby Powell,Bobby,Powell,24,Democrat,Senator,12024U,n
+"Rodriguez, Ana Maria",Ana Maria Rodriguez,Ana,Rodriguez,40,Republican,Senator,12040U,y
+"Rouson, Darryl Ervin",Darryl Ervin Rouson,Darryl,Rouson,16,Democrat,Senator,12016U,n
+"Simon, Corey",Corey Simon,Corey,Simon,3,Republican,Senator,12003U,n
+"Stewart, Linda",Linda Stewart,Linda,Stewart,17,Democrat,Senator,12017U,n
+"Thompson, Geraldine F. ""Geri""","Geraldine F. ""Geri"" Thompson",Geraldine,Thompson,15,Democrat,Senator,12015U,n
+"Torres, Victor M. , Jr.","Victor M. , Jr. Torres",Victor,Torres,25,Democrat,Senator,12025U,na
+"Trumbull, Jay",Jay Trumbull,Jay,Trumbull,2,Republican,Senator,12002U,y
+"Wright, Tom A.",Tom A. Wright,Tom,Wright,8,Republican,Senator,12008U,y
+"Yarborough, Clay",Clay Yarborough,Clay,Yarborough,4,Republican,Senator,12004U,y

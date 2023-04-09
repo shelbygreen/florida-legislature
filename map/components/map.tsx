@@ -28,10 +28,10 @@ const Map = () => {
     // map's basic settings
     const map = new mapboxgl.Map({
       container: node,
-      style: "mapbox://styles/mapbox/dark-v10",
+      style: "mapbox://styles/mapbox/light-v10",
       center: [-84.2830590599657, 30.43936603257657],
       interactive: true,
-      zoom: 9,
+      zoom: 6,
       minZoom: 0
     });
 
@@ -53,11 +53,21 @@ const Map = () => {
 
     // load layer
     map.on("load", function () {
+      // load cities layer
+      const layers = map.getStyle().layers;
+      let firstSymbolId;
+      for (const layer of layers) {
+        if (layer.type === 'symbol') {
+          firstSymbolId = layer.id;
+          break;
+        }
+      }
+
       // import layer
       map.addSource("districts", {
         type: "geojson",
         data:
-          "https://raw.githubusercontent.com/shelbygreen/florida-legislature/main/data/geospatial/clipped/senate/FL-senate.geojson",
+          "https://raw.githubusercontent.com/shelbygreen/florida-legislature/main/data/geospatial/append/FL-senate.geojson",
         generateId: true,
       });
 
@@ -68,18 +78,32 @@ const Map = () => {
         source: "districts",
         layout: {},
         paint: {
-            'fill-color': '#D8B365'
-        },
-      });
+            'fill-color': [
+              'match',
+              ['get', 'vote'],
+              'y',
+              '#127852',
+              'n',
+              '#C40233',
+              'm',
+              '#000',
+              "#ccc"
+            ],
+        'fill-opacity': 0.25
+        }
+      },
+      firstSymbolId
+      );
       map.addLayer({
         id: "districts-outline",
         type: "line",
         source: "districts",
         layout: {},
         paint: {
-            'line-color': '#000000'
+            'line-color': '#b7b7b7'
         },
-      });
+      },
+      firstSymbolId);
     });
 
     // after the map loads
@@ -91,9 +115,10 @@ const Map = () => {
       if (typeof window === "undefined" || node === null) return;
 
       const name = features[0]?.properties?.name // optional chaining to avoid "object is null" error
-    //   const amount = features[0]?.properties?.amount
+      const vote = features[0]?.properties?.vote
+      const party = features[0]?.properties?.party
 
-      const html = `${name}`
+      const html = `${party} Senator ${name} voted ${vote} on the bill to limit abortions to 6-weeks`
 
       // create tooltip variable for the floating card div
       const tooltip = document.getElementById('popup')
