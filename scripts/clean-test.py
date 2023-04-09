@@ -141,7 +141,7 @@ if __name__ == "__main__":
     # reproject_chamber_shapes(clipped_shapes / "state", clean_shapes / "state")
 
     # handle house
-    clip_chamber_shapes(raw_shapes, clipped_shapes / "house", "*house.geojson")
+#     clip_chamber_shapes(raw_shapes, clipped_shapes / "house", "*house.geojson")
     # remove_points(
     #     clipped_shapes / "house", depointed_shapes / "house", "*house.geojson"
     # )
@@ -150,16 +150,16 @@ if __name__ == "__main__":
 
 
     # handle senate
-    # clip_chamber_shapes(raw_shapes, clipped_shapes / "senate", "*senate.geojson")
-    # remove_points(
-    #     clipped_shapes / "senate", depointed_shapes / "senate", "*senate.geojson"
-    # )
-    # reproject_chamber_shapes(depointed_shapes / "senate", clean_shapes / "senate")
-    # reproject_chamber_shapes(clipped_shapes / "senate", clean_shapes / "senate")
+    clip_chamber_shapes(raw_shapes, clipped_shapes / "senate", "*senate.geojson")
+    remove_points(
+        clipped_shapes / "senate", depointed_shapes / "senate", "*senate.geojson"
+    )
+    reproject_chamber_shapes(depointed_shapes / "senate", clean_shapes / "senate")
+    reproject_chamber_shapes(clipped_shapes / "senate", clean_shapes / "senate")
 
 
     # remove the intermediate files
     shutil.rmtree(clipped_shapes)
-    shutil.rmtree(depointed_shapes)
+#     shutil.rmtree(depointed_shapes)
 
     print("Done reprojecting. Check the clean folder for results")

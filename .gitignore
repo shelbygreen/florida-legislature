@@ -2,9 +2,12 @@
 data/geospatial/fetch
 data/geospatial/process
 data/geospatial/depointed
+data/geospatial/.DS_Store
 scripts/testing.ipynb
 map/package-lock.json
 map/node_modules
+map/.next
+map/.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

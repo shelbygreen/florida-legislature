@@ -8,79 +8,76 @@ import us
 import geopandas as gpd
 from pathlib import Path
 
+# name the IN and OUT path
+# in - fetch folder
+# out - process folder
+
 IN = Path("../data/geospatial/fetch")
 OUT = Path("../data/geospatial/process")
 
-# import openstates_metadata as metadata
-def shp_to_geojson(geojson_path, is_state_file):
-    # read in the shp and store it in a geodataframe
+# function to convert shapefile into geojson file
+def shp_to_geojson(geojson_path):
+    
+    # read in the shp file and store it in a geodataframe
     gdf = gpd.read_file(geojson_path)
 
-    # add bounds
-    # gdf['bounds'] = gdf.bounds.round(2).apply(lambda row: list(row), axis=1)
-
+    # add 'chamber' field
+    # if the file name ends in "sldl", set chamber as House
+    # if not, set chamber as Senate
     chamber = "House" if geojson_path.stem.endswith("sldl") else "Senate"
-
+    
     # parse to geojson
     gdf_parsed = gdf.to_json()
     geojson = json.loads(gdf_parsed)
+    
+    print("checkpoint 3 - modifying the features of the geojson file")
 
-    # add fields to each feature -- geoid, bounds, state abbr, chamber, district
+    # add fields to each feature
+    # new features: geoid, ccid, state abbr, chamber, district, name
     for feature in geojson["features"]:
-        # rename keys in state files
-        if is_state_file:
-            for key in [k for k in feature["properties"].keys()]:
-                new_key = key.replace("10", "")
-                feature["properties"][new_key] = feature["properties"].pop(key)
+        
+        # add state field
+        state = us.states.lookup('12')
+        
+        # add 'GEOID' field
+        GEOID = '12' + str(feature["properties"]["DISTRICT"]).zfill(3)
+        
+        # add district field
+        district = (
+            feature["properties"]["DISTRICT"]
+        )
 
-        state = us.states.lookup(feature["properties"]["STATEFP"])
-        print(state)
-        geoid = feature["properties"]["GEOID"]
-        # bounds = feature["properties"]["bounds"]
+        # add name field
+        name = (
+            us.states.lookup('12').name
+            + " State "
+            + chamber
+            + " "
+            + str(district)
+        )
+        
+        # add ccid field
+        ccid = (
+            GEOID + "U"
+            if chamber == "Senate"
+            else GEOID + "L"
+        )
 
-        if is_state_file:
-            name = state.name
-            ccid = state.fips
-        else:
-            name = (
-                us.states.lookup(feature["properties"]["STATEFP"]).name
-                + " "
-                + feature["properties"]["NAMELSAD"]
-            )
-
-            # create new features
-            ccid = (
-                feature["properties"]["GEOID"] + "U"
-                if feature["properties"]["LSAD"] == "LU"
-                else feature["properties"]["GEOID"] + "L"
-            )
-
-            district = (
-                feature["properties"]["SLDLST"].lstrip("0")
-                if "SLDLST" in feature["properties"].keys()
-                else feature["properties"]["SLDUST"].lstrip("0")
-            )
-
+        # all features
         feature["properties"] = {
             "state_fips": state.fips,
             "state_abbr": state.abbr,
-            "geoid": geoid,
+            "geoid": GEOID,
             "ccid": ccid,
             "name": name,
-            # "bounds": bounds,
+            "chamber": chamber,
+            "district": district,
+            "population":feature["properties"]["TOTAL"]
         }
 
-        if not is_state_file:
-            feature["properties"]["chamber"] = chamber
-            feature["properties"]["district"] = district
-        else:
-            # if the shape is a state, and the shape is included in the final
-            # shapefile, then we have no data on that state, and we want the
-            # entire state to have a flag value for cc_score
-            feature["properties"]["cc_score"] = 999
 
     # export to geojson file
-    region_type = "state" if is_state_file else chamber.lower()
+    region_type = chamber.lower()
     output_path = OUT / f"{state.abbr}-{region_type}.geojson"
     print(f" {state.abbr}-{region_type} shp => {output_path.name}")
 
@@ -91,11 +88,14 @@ def shp_to_geojson(geojson_path, is_state_file):
     with open(output_path, "w+") as geojson_file:
         json.dump(geojson, geojson_file)
         
-files = sorted(IN.glob("tl*.shp"))
+# create list of files
+# from fetch folder, starting with FL
+files = sorted(IN.glob("FL*.shp"))
+print("checkpoint 1 - create list of shp files in fetch folder")
 
 # convert from shp to geojson
 for file in files:
-    is_state_file = "state10" in file.name
+    print("checkpoint 2 - {0} being converted".format(file))
 
     # create geojson in source folder
     newfilename = file.with_suffix(".geojson")
@@ -106,8 +106,6 @@ for file in files:
         subprocess.run(
             [
                 "ogr2ogr",
-                "-where",
-                f"GEOID{'10' if is_state_file else ''} NOT LIKE '%ZZZ'",
                 "-t_srs",
                 "crs:84",
                 "-f",
@@ -117,8 +115,8 @@ for file in files:
             ],
             check=True,
         )
-    # create geojson in all folder
-    shp_to_geojson(newfilename, is_state_file)
+    # create geojson in fetch & process folder
+    shp_to_geojson(newfilename)
 
 # finished message
 print("Done converting shp to geojson")
