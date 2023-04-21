@@ -85,7 +85,7 @@ const Map = () => {
               '#127852',
               'n',
               '#C40233',
-              'm',
+              'na',
               '#000',
               "#ccc"
             ],
@@ -117,8 +117,9 @@ const Map = () => {
       const name = features[0]?.properties?.name // optional chaining to avoid "object is null" error
       const vote = features[0]?.properties?.vote
       const party = features[0]?.properties?.party
+      // const pop = features[0]?.properties?.population
 
-      const html = `${party} Senator ${name} voted ${vote} on the bill to limit abortions to 6-weeks`
+      const html = `${party} Senator ${name} voted ${vote} on the bill to limit abortions to 6-weeks.`
 
       // create tooltip variable for the floating card div
       const tooltip = document.getElementById('popup')
