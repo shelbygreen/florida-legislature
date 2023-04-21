@@ -1,32 +1,42 @@
 {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [-84.10304950689707, 30.4764930465013]
-    },
-    "properties": {
-      "name": "Sample from Pond",
-      "pH": 4.79,
-      "ph-app": 0.01,
-      "TP": 0.77,
-      "TP-app": 0.02,
-      "TN": 2.35,
-      "TN-app": 0.02
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sample from Pond",
+        "pH": 4.79,
+        "ph-app": 0.01,
+        "TP": 0.77,
+        "TP-app": 0.02,
+        "TN": 2.35,
+        "TN-app": 0.02
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.10304950689707, 30.4764930465013]
+      }
     }
-  }, 
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [-84.10292076087265, 30.476187911156476]
-    },
-    "properties": {
-      "name": "Sample from Stream",
-      "pH": 4.78,
-      "ph-app": 0.02,
-      "TP": 0.77,
-      "TP-app": 0.00,
-      "TN": 0.63,
-      "TN-app": 0.24
+  ]
+},
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sample from Stream",
+        "pH": 4.78,
+        "ph-app": 0.02,
+        "TP": 0.77,
+        "TP-app": 0.00,
+        "TN": 0.63,
+        "TN-app": 0.24
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.10292076087265, 30.476187911156476]
+      }
     }
-  }
+  ]
+}
